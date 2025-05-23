@@ -1,8 +1,8 @@
 # **Obesity Level Estimation Using Machine Learning**  
-### [Statistical Learning](https://unibg.coursecatalogue.cineca.it/insegnamenti/2024/38091-MOD2/2021/8865/89?coorte=2024&adCodRadice=38091)   Project – Master's in Computer Engineering (Data Science & Data Engineering Pathway)  
+### [Statistical Learning](https://unibg.coursecatalogue.cineca.it/insegnamenti/2024/38091-MOD2/2021/8865/89?coorte=2024&adCodRadice=38091) - Master's in Computer Engineering (Data Science & Data Engineering Pathway)  
 
 ## **Overview**  
-This project aims to estimate obesity levels in individuals from **Mexico, Peru, and Colombia** based on their **eating habits and physical condition**. Using **machine learning classification models**, we analyze patterns in the dataset to predict obesity levels with high accuracy.  
+This project aims to estimate obesity levels in individuals from **Mexico, Peru, and Colombia** based on their **eating habits and physical condition**. Using **machine learning classification models**, patterns in the dataset are analyzed to predict obesity levels with high accuracy.  
 
 ## **Dataset Information**  
 - **Source:** [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/544/estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition)  
@@ -23,37 +23,39 @@ This project aims to estimate obesity levels in individuals from **Mexico, Peru,
 
 ## **Models Applied & Results**  
 
-We implemented several **classification models** to evaluate their predictive performance, leveraging **GridSearchCV for hyperparameter tuning** and **5-fold cross-validation** to ensure generalization.  
+Several **classification models** were implemented to evaluate predictive performance, leveraging **GridSearchCV for hyperparameter tuning** and **5-fold cross-validation** to ensure generalization.  
 
 ### **Performance Summary**  
 
-| Model                | Best Hyperparameters | Mean CV Accuracy | Test Accuracy (%) | Train Accuracy (%) |
-|----------------------|----------------------|------------------|-------------------|-------------------|
-| **Logistic Regression** | ElasticNet (L1/L2) | **87%** | **87.36%** | **91.05%** |
-| **Decision Tree** | Depth = 10, Entropy | **91%** | **93.68%** | **98.79%** |
-| **Random Forest** | 400 Estimators, Entropy | **91%** | **91.95%** | **96.10%** |
-| **SVM** | Linear Kernel, C=5 | **95%** | **96.74%** | **97.76%** |
-| **AdaBoost** | Learning Rate = 0.5, 500 Estimators | **96%** | **95.02%** | **99.89%** |
+| Model                | Best Hyperparameters | CV Accuracy (%) | Test Accuracy (%) | Zero-One Loss | F1 Score (%) |
+|----------------------|----------------------|----------------|----------------|--------------|-------------|
+| **Logistic Regression** | ElasticNet (L1/L2) | **87%** | **87.36%** | **66.0** | **87.36%** |
+| **Decision Tree** | Depth = 10, Entropy | **91%** | **93.68%** | **33.0** | **93.68%** |
+| **Random Forest** | 400 Estimators, Entropy | **91%** | **91.95%** | **42.0** | **91.95%** |
+| **SVM** | Linear Kernel, C=5 | **95%** | **96.74%** | **17.0** | **96.74%** |
+| **AdaBoost** | Learning Rate = 0.6, 300 Estimators | **92%** | **88.12%** | **62.0** | **88.12%** |
 
-**Insights:**  
-- **SVM** achieved the **highest test accuracy** (96.74%).  
-- **AdaBoost** had **strong generalization**, balancing precision and recall effectively.  
-- **Decision Tree & Random Forest** performed well but showed signs of overfitting.  
-- **Logistic Regression** had lower accuracy compared to ensemble-based models, but remained interpretable.  
+### **Key Observations**  
+- **SVM achieved the highest test accuracy (96.74%)**, indicating superior generalization.  
+- **Decision Tree performed well (93.68%)**, but showed minor overfitting in training.  
+- **Random Forest provided stable predictions (91.95%)**, with lower variance compared to Decision Tree.  
+- **Logistic Regression**, serving as the baseline, performed moderately (87.36%).  
+- **AdaBoost**, despite strong cross-validation accuracy (92%), exhibited lower test accuracy (88.12%), suggesting generalization challenges.  
 
-## Methodology
+## **Methodology**
 1- **Data Preprocessing** → Standardization, PCA for dimensionality reduction, SMOTE for class balancing  
 2- **Model Training** → Decision Tree, Random Forest, AdaBoost, SVM, Logistic Regression  
 3- **Hyperparameter Optimization** → GridSearchCV for best parameter selection  
 4- **Cross-Validation** → 5-Fold CV to ensure robustness  
 5- **Model Evaluation** → Accuracy, F1 Score, Confusion Matrix, Precision, Recall  
 
-##  Installation & Dependencies
+## **Installation & Dependencies**
 To replicate the project, install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
+
 **Dependencies:**  
 ```
 numpy  
